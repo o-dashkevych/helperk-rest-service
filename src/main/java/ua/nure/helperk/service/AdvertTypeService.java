@@ -8,7 +8,7 @@ import java.util.List;
  * @author Oleg Dashkevych.
  */
 public interface AdvertTypeService {
-	
+
 	void add(AdvertType advertType);
 
 	void update(AdvertType advertType);

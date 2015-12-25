@@ -15,34 +15,34 @@ import java.util.List;
 
 @Service
 @Transactional
-public class DefaultUserRoleService implements UserRoleService{
+public class DefaultUserRoleService implements UserRoleService {
 
 
 	@Autowired
-	private UserRoleDAO roleDAO;
+	private UserRoleDAO userRoleDAO;
 
 	@Override
 	public void add(UserRole userRole) {
-		roleDAO.save(userRole);
+		userRoleDAO.save(userRole);
 	}
 
 	@Override
 	public void update(UserRole userRole) {
-		roleDAO.save(userRole);
+		userRoleDAO.save(userRole);
 	}
 
 	@Override
 	public void delete(UserRole userRole) {
-		roleDAO.remove(userRole);
+		userRoleDAO.remove(userRole);
 	}
 
 	@Override
 	public UserRole findUserRoleByName(String name) {
-		return roleDAO.getByName(name);
+		return userRoleDAO.getByName(name);
 	}
 
 	@Override
 	public List<UserRole> getAllUserRoles() {
-		return roleDAO.findAll();
+		return userRoleDAO.findAll();
 	}
 }

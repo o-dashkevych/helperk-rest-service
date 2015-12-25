@@ -1,7 +1,6 @@
 package ua.nure.helperk.entity;
 
 import javax.persistence.*;
-
 import java.io.Serializable;
 
 import static javax.persistence.GenerationType.IDENTITY;
@@ -11,7 +10,7 @@ import static javax.persistence.GenerationType.IDENTITY;
  */
 @Entity
 @Table(name = "message", uniqueConstraints = @UniqueConstraint(columnNames = "id"))
-public class Message implements Serializable{
+public class Message implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
@@ -23,7 +22,7 @@ public class Message implements Serializable{
 	private Boolean isRead;
 
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "sender_id",  nullable = false)
+	@JoinColumn(name = "sender_id", nullable = false)
 	private User sender;
 
 	@ManyToOne(fetch = FetchType.EAGER)
@@ -40,5 +39,43 @@ public class Message implements Serializable{
 		this.getter = getter;
 	}
 
+	public Long getId() {
+		return id;
+	}
 
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getTitleName() {
+		return titleName;
+	}
+
+	public void setTitleName(String titleName) {
+		this.titleName = titleName;
+	}
+
+	public Boolean getRead() {
+		return isRead;
+	}
+
+	public void setRead(Boolean read) {
+		isRead = read;
+	}
+
+	public User getSender() {
+		return sender;
+	}
+
+	public void setSender(User sender) {
+		this.sender = sender;
+	}
+
+	public User getGetter() {
+		return getter;
+	}
+
+	public void setGetter(User getter) {
+		this.getter = getter;
+	}
 }

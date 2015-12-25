@@ -20,6 +20,7 @@ public class DefaultAdvertService implements AdvertService {
 	@Autowired
 	private AdvertDAO advertDAO;
 
+
 	@Override
 	public void add(Advert advert) {
 		advertDAO.save(advert);

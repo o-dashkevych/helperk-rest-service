@@ -8,7 +8,7 @@ import java.util.List;
  * @author Oleg Dashkevych.
  */
 public interface MessageService {
-	
+
 	void add(Message message);
 
 	void update(Message message);

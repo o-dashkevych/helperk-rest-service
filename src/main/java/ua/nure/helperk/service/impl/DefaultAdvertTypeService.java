@@ -18,25 +18,25 @@ import java.util.List;
 public class DefaultAdvertTypeService implements AdvertTypeService {
 
 	@Autowired
-	private AdvertTypeDAO typeDAO;
+	private AdvertTypeDAO advertTypeDAO;
 
 	@Override
 	public void add(AdvertType userRole) {
-		typeDAO.save(userRole);
+		advertTypeDAO.save(userRole);
 	}
 
 	@Override
 	public void update(AdvertType userRole) {
-		typeDAO.save(userRole);
+		advertTypeDAO.save(userRole);
 	}
 
 	@Override
 	public void delete(AdvertType userRole) {
-		typeDAO.remove(userRole);
+		advertTypeDAO.remove(userRole);
 	}
 
 	@Override
 	public List<AdvertType> getAllAdvertTypes() {
-		return typeDAO.findAll();
+		return advertTypeDAO.findAll();
 	}
 }

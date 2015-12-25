@@ -1,7 +1,6 @@
 package ua.nure.helperk.entity;
 
 import javax.persistence.*;
-
 import java.sql.Timestamp;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;

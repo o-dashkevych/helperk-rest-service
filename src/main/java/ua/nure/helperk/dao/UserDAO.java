@@ -5,8 +5,8 @@ import ua.nure.helperk.entity.User;
 
 public interface UserDAO extends GenericDAO<User, Long> {
 
-    Boolean authenticate(String email, String password);
+	Boolean authenticate(String email, String password);
 
-    User findByEmail(String email);
+	User findByEmail(String email);
 
 }

@@ -1,13 +1,13 @@
 package ua.nure.helperk.dao.impl;
 
-import ua.nure.helperk.dao.UserDAO;
-import ua.nure.helperk.entity.User;
 import com.googlecode.genericdao.dao.hibernate.GenericDAOImpl;
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+import ua.nure.helperk.dao.UserDAO;
+import ua.nure.helperk.entity.User;
 
 import static org.hibernate.criterion.Restrictions.eq;
 
@@ -15,27 +15,28 @@ import static org.hibernate.criterion.Restrictions.eq;
 @Transactional
 public class DefaultUserDao extends GenericDAOImpl<User, Long> implements UserDAO {
 
-    @Autowired
-    @Override
-    public void setSessionFactory(SessionFactory sessionFactory) {
-        super.setSessionFactory(sessionFactory);
-    }
 
-    @Override
-    public Boolean authenticate(String email, String password) {
-        Criteria criteria = getSession().createCriteria(User.class);
-        criteria.add(eq("email", email));
-        criteria.add(eq("password", password));
+	@Autowired
+	@Override
+	public void setSessionFactory(SessionFactory sessionFactory) {
+		super.setSessionFactory(sessionFactory);
+	}
 
-        System.out.println(email + " " + password);
-        return criteria.uniqueResult() != null;
-    }
+	@Override
+	public Boolean authenticate(String email, String password) {
+		Criteria criteria = getSession().createCriteria(User.class);
+		criteria.add(eq("email", email));
+		criteria.add(eq("password", password));
 
-    @Override
-    public User findByEmail(String email) {
-        Criteria criteria = getSession().createCriteria(User.class);
-        criteria.add(eq("email", email));
-        return (User) criteria.uniqueResult();
-    }
+		System.out.println(email + " " + password);
+		return criteria.uniqueResult() != null;
+	}
+
+	@Override
+	public User findByEmail(String email) {
+		Criteria criteria = getSession().createCriteria(User.class);
+		criteria.add(eq("email", email));
+		return (User) criteria.uniqueResult();
+	}
 
 }

@@ -1,10 +1,10 @@
 package ua.nure.helperk.service.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import ua.nure.helperk.dao.UserDAO;
 import ua.nure.helperk.entity.User;
 import ua.nure.helperk.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
@@ -13,41 +13,41 @@ import java.util.List;
 @Transactional
 public class DefaultUserService implements UserService {
 
-    @Autowired
-    private UserDAO userDao;
+	@Autowired
+	private UserDAO userDAO;
 
-    @Override
-    public void add(User user) {
-        userDao.save(user);
-    }
+	@Override
+	public void add(User user) {
+		userDAO.save(user);
+	}
 
-    @Override
-    public void update(User user) {
-        userDao.save(user);
-    }
+	@Override
+	public void update(User user) {
+		userDAO.save(user);
+	}
 
-    @Override
-    public void delete(User user) {
-        userDao.remove(user);
-    }
+	@Override
+	public void delete(User user) {
+		userDAO.remove(user);
+	}
 
-    @Override
-    public User findUserById(Long id) {
-        return userDao.find(id);
-    }
+	@Override
+	public User findUserById(Long id) {
+		return userDAO.find(id);
+	}
 
-    @Override
-    public List<User> getAllUsers() {
-        return userDao.findAll();
-    }
+	@Override
+	public List<User> getAllUsers() {
+		return userDAO.findAll();
+	}
 
-    @Override
-    public User findByEmail(String email) {
-        return userDao.findByEmail(email);
-    }
+	@Override
+	public User findByEmail(String email) {
+		return userDAO.findByEmail(email);
+	}
 
-    @Override
-    public Boolean authenticate(String email, String password) {
-        return userDao.authenticate(email, password);
-    }
+	@Override
+	public Boolean authenticate(String email, String password) {
+		return userDAO.authenticate(email, password);
+	}
 }
