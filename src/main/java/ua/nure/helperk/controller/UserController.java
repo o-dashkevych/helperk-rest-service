@@ -11,6 +11,11 @@ import ua.nure.helperk.entity.UserRole;
 import ua.nure.helperk.service.UserRoleService;
 import ua.nure.helperk.service.UserService;
 
+import java.util.List;
+
+/**
+ * @author Oleg Dashkevych.
+ */
 @RestController
 @RequestMapping("/user")
 public class UserController {
@@ -42,9 +47,15 @@ public class UserController {
 						@RequestParam(value = "password") String password) {
 		UserRole role = userRoleService.findUserRoleByName(Roles.USER.name());
 		User user = new User(name, email, password, role);
-		System.out.println("Tyring to add user with email: " + email + "name: " + name);
+		System.out.println("Trying to add user with email: " + email + "name: " + name);
 		userService.add(user);
-
 		return user;
+	}
+
+	@RequestMapping("/all")
+	public List<User> getAll() {
+		List<User> users = userService.getAllUsers();
+		LOGGER.info("all users size: " + users.size());
+		return users;
 	}
 }

@@ -15,5 +15,7 @@ public interface AdvertService {
 
 	void delete(Advert advert);
 
+	Advert getById(Long id);
+
 	List<Advert> getAllAdverts();
 }

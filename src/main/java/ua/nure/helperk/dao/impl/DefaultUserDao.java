@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import ua.nure.helperk.dao.UserDAO;
 import ua.nure.helperk.entity.User;
+import ua.nure.helperk.entity.UserRole;
 
 import static org.hibernate.criterion.Restrictions.eq;
 
@@ -37,6 +38,14 @@ public class DefaultUserDao extends GenericDAOImpl<User, Long> implements UserDA
 		Criteria criteria = getSession().createCriteria(User.class);
 		criteria.add(eq("email", email));
 		return (User) criteria.uniqueResult();
+	}
+
+	@Override
+	public UserRole getRoleByName(String email) {
+		Criteria criteria = getSession().createCriteria(User.class);
+		criteria.add(eq("email", email));
+		User user = (User) criteria.uniqueResult();
+		return user.getRole();
 	}
 
 }

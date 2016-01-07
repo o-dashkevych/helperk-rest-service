@@ -16,4 +16,6 @@ public interface AdvertTypeService {
 	void delete(AdvertType advertType);
 
 	List<AdvertType> getAllAdvertTypes();
+
+	AdvertType findAdvertTypeByName(String name);
 }

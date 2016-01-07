@@ -32,12 +32,14 @@ public class Advert {
 
 	private Double price;
 
+	private byte[] image;
+
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "creator_id", nullable = false)
 	private User creator;
 
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "executor_id", nullable = false)
+	@JoinColumn(name = "executor_id")
 	private User executor;
 
 	@ManyToOne(fetch = FetchType.EAGER)
@@ -48,7 +50,7 @@ public class Advert {
 	}
 
 	public Advert(String titleName, String description, Timestamp startDate,
-				  Timestamp endDate, Double price, User creator, User executor, AdvertType type) {
+				  Timestamp endDate, Double price, User creator, User executor, AdvertType type, byte[] image) {
 		this.titleName = titleName;
 		this.description = description;
 		this.startDate = startDate;
@@ -57,6 +59,7 @@ public class Advert {
 		this.creator = creator;
 		this.executor = executor;
 		this.type = type;
+		this.image = image;
 
 		ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
 		executorService.schedule(() -> {
@@ -133,5 +136,13 @@ public class Advert {
 
 	public void setExecutor(User executor) {
 		this.executor = executor;
+	}
+
+	public byte[] getImage() {
+		return image;
+	}
+
+	public void setImage(byte[] image) {
+		this.image = image;
 	}
 }
