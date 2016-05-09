@@ -1,5 +1,8 @@
 package ua.nure.helperk.entity;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.concurrent.Executors;
@@ -12,7 +15,9 @@ import static javax.persistence.GenerationType.IDENTITY;
  * @author Oleg Dashkevych.
  */
 
-
+@SuppressWarnings({"CanBeFinal", "FieldCanBeLocal"})
+@Data
+@NoArgsConstructor
 @Entity
 @Table(name = "advert", uniqueConstraints = @UniqueConstraint(columnNames = "id"))
 public class Advert {
@@ -44,9 +49,6 @@ public class Advert {
 	@JoinColumn(name = "advert_type_id", nullable = false)
 	private AdvertType type;
 
-	public Advert() {
-	}
-
 	public Advert(String titleName, String description, Timestamp startDate,
 				  Timestamp endDate, Double price, User creator, User executor, AdvertType type) {
 		this.titleName = titleName;
@@ -61,77 +63,5 @@ public class Advert {
 		ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
 		executorService.schedule(() -> {
 		}, 24, TimeUnit.HOURS);
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getTitleName() {
-		return titleName;
-	}
-
-	public void setTitleName(String titleName) {
-		this.titleName = titleName;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public Timestamp getStartDate() {
-		return startDate;
-	}
-
-	public void setStartDate(Timestamp startDate) {
-		this.startDate = startDate;
-	}
-
-	public Timestamp getEndDate() {
-		return endDate;
-	}
-
-	public void setEndDate(Timestamp endDate) {
-		this.endDate = endDate;
-	}
-
-	public Double getPrice() {
-		return price;
-	}
-
-	public void setPrice(Double price) {
-		this.price = price;
-	}
-
-	public User getCreator() {
-		return creator;
-	}
-
-	public void setCreator(User creator) {
-		this.creator = creator;
-	}
-
-	public AdvertType getType() {
-		return type;
-	}
-
-	public void setType(AdvertType type) {
-		this.type = type;
-	}
-
-	public User getExecutor() {
-		return executor;
-	}
-
-	public void setExecutor(User executor) {
-		this.executor = executor;
 	}
 }

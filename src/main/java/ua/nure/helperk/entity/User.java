@@ -1,5 +1,8 @@
 package ua.nure.helperk.entity;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.concurrent.Executors;
@@ -8,6 +11,9 @@ import java.util.concurrent.TimeUnit;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
+@SuppressWarnings({"CanBeFinal", "FieldCanBeLocal"})
+@Data
+@NoArgsConstructor
 @Entity
 @Table(name = "user", uniqueConstraints = @UniqueConstraint(columnNames = "email"))
 public class User implements Serializable {
@@ -27,9 +33,6 @@ public class User implements Serializable {
 	@JoinColumn(name = "user_role_id", nullable = false)
 	private UserRole role;
 
-	public User() {
-	}
-
 	public User(String name, String email, String password, UserRole role) {
 		this.name = name;
 		this.email = email;
@@ -40,45 +43,5 @@ public class User implements Serializable {
 		executorService.schedule(() -> {
 		}, 24, TimeUnit.HOURS);
 
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public UserRole getRole() {
-		return role;
-	}
-
-	public void setRole(UserRole role) {
-		this.role = role;
 	}
 }

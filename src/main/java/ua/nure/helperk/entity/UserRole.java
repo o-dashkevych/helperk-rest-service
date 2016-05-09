@@ -1,5 +1,8 @@
 package ua.nure.helperk.entity;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.concurrent.Executors;
@@ -12,6 +15,9 @@ import static javax.persistence.GenerationType.IDENTITY;
  * @author Oleg Dashkevych.
  */
 
+@SuppressWarnings({"CanBeFinal", "FieldCanBeLocal"})
+@Data
+@NoArgsConstructor
 @Entity
 @Table(name = "user_role", uniqueConstraints = @UniqueConstraint(columnNames = "name"))
 public class UserRole implements Serializable {
@@ -21,10 +27,8 @@ public class UserRole implements Serializable {
 	@Column(name = "id", unique = true, nullable = false)
 	private Long id;
 
+	@SuppressWarnings("FieldCanBeLocal")
 	private String name;
-
-	public UserRole() {
-	}
 
 	public UserRole(String name) {
 		this.name = name;
@@ -32,21 +36,5 @@ public class UserRole implements Serializable {
 		ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
 		executorService.schedule(() -> {
 		}, 24, TimeUnit.HOURS);
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
 	}
 }

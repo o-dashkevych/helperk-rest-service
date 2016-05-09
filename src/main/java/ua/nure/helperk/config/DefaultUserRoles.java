@@ -3,6 +3,6 @@ package ua.nure.helperk.config;
 /**
  * @author Oleg Dashkevych.
  */
-public enum Roles {
+public enum DefaultUserRoles {
 	ADMIN, USER
 }

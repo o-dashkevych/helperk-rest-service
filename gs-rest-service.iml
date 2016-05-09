@@ -4,8 +4,8 @@
     <facet type="Spring" name="Spring">
       <configuration>
         <fileset id="fileset" name="Spring Application Context" removed="false">
-          <file>file://$MODULE_DIR$/src/main/java/ua/nure/helperk/Application.java</file>
           <file>file://$MODULE_DIR$/src/main/java/ua/nure/helperk/config/DBConfig.java</file>
+          <file>file://$MODULE_DIR$/src/main/java/ua/nure/helperk/Application.java</file>
         </fileset>
       </configuration>
     </facet>
@@ -91,11 +91,12 @@
     <orderEntry type="library" name="Maven: commons-dbcp:commons-dbcp:1.4" level="project" />
     <orderEntry type="library" name="Maven: commons-pool:commons-pool:1.6" level="project" />
     <orderEntry type="library" name="Maven: javax.inject:javax.inject:1" level="project" />
-    <orderEntry type="library" name="Maven: log4j:log4j:1.2.15" level="project" />
-    <orderEntry type="library" name="Maven: javax.mail:mail:1.4" level="project" />
-    <orderEntry type="library" name="Maven: javax.activation:activation:1.1" level="project" />
-    <orderEntry type="library" name="Maven: javax.jms:jms:1.1" level="project" />
-    <orderEntry type="library" name="Maven: com.sun.jdmk:jmxtools:1.2.1" level="project" />
-    <orderEntry type="library" name="Maven: com.sun.jmx:jmxri:1.2.1" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: log4j:log4j:1.2.15" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: javax.mail:mail:1.4" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: javax.activation:activation:1.1" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: javax.jms:jms:1.1" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: com.sun.jdmk:jmxtools:1.2.1" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: com.sun.jmx:jmxri:1.2.1" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.projectlombok:lombok:1.16.8" level="project" />
   </component>
 </module>

@@ -1,5 +1,8 @@
 package ua.nure.helperk.entity;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -8,6 +11,9 @@ import static javax.persistence.GenerationType.IDENTITY;
 /**
  * @author Oleg Dashkevych.
  */
+@SuppressWarnings({"CanBeFinal", "FieldCanBeLocal"})
+@Data
+@NoArgsConstructor
 @Entity
 @Table(name = "message", uniqueConstraints = @UniqueConstraint(columnNames = "id"))
 public class Message implements Serializable {
@@ -29,53 +35,10 @@ public class Message implements Serializable {
 	@JoinColumn(name = "getter_id", nullable = false)
 	private User getter;
 
-	public Message() {
-	}
-
 	public Message(String titleName, Boolean isRead, User sender, User getter) {
 		this.titleName = titleName;
 		this.isRead = isRead;
 		this.sender = sender;
-		this.getter = getter;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getTitleName() {
-		return titleName;
-	}
-
-	public void setTitleName(String titleName) {
-		this.titleName = titleName;
-	}
-
-	public Boolean getRead() {
-		return isRead;
-	}
-
-	public void setRead(Boolean read) {
-		isRead = read;
-	}
-
-	public User getSender() {
-		return sender;
-	}
-
-	public void setSender(User sender) {
-		this.sender = sender;
-	}
-
-	public User getGetter() {
-		return getter;
-	}
-
-	public void setGetter(User getter) {
 		this.getter = getter;
 	}
 }

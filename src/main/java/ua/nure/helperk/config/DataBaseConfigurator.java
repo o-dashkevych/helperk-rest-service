@@ -26,7 +26,7 @@ import java.util.Properties;
 @Configuration
 @EnableTransactionManagement
 @PropertySource("classpath:application.properties")
-public class DBConfig {
+public class DataBaseConfigurator {
 
 	@Inject
 	private Environment environment;

@@ -24,12 +24,15 @@ public class DefaultUserDao extends GenericDAOImpl<User, Long> implements UserDA
 
 	@Override
 	public Boolean authenticate(String email, String password) {
+		Criteria criteria = makeAuthCriteria(email, password);
+		return criteria.uniqueResult() != null;
+	}
+
+	private Criteria makeAuthCriteria(String email, String password){
 		Criteria criteria = getSession().createCriteria(User.class);
 		criteria.add(eq("email", email));
 		criteria.add(eq("password", password));
-
-		System.out.println(email + " " + password);
-		return criteria.uniqueResult() != null;
+		return criteria;
 	}
 
 	@Override
@@ -38,5 +41,4 @@ public class DefaultUserDao extends GenericDAOImpl<User, Long> implements UserDA
 		criteria.add(eq("email", email));
 		return (User) criteria.uniqueResult();
 	}
-
 }
