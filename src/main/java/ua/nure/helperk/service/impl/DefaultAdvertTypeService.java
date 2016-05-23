@@ -41,7 +41,8 @@ public class DefaultAdvertTypeService implements AdvertTypeService {
 	}
 
 	@Override
-	public AdvertType getByName(String name){
+	public AdvertType findAdvertTypeByName(String name) {
 		return advertTypeDAO.getByName(name);
 	}
+
 }

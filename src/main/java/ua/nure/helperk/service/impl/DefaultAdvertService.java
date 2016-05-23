@@ -20,7 +20,6 @@ public class DefaultAdvertService implements AdvertService {
 	@Autowired
 	private AdvertDAO advertDAO;
 
-
 	@Override
 	public void add(Advert advert) {
 		advertDAO.save(advert);
@@ -34,6 +33,11 @@ public class DefaultAdvertService implements AdvertService {
 	@Override
 	public void delete(Advert advert) {
 		advertDAO.remove(advert);
+	}
+
+	@Override
+	public Advert getById(Long id) {
+		return advertDAO.find(id);
 	}
 
 	@Override

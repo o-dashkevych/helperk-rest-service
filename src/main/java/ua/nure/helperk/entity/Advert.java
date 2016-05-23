@@ -42,7 +42,7 @@ public class Advert {
 	private User creator;
 
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "executor_id", nullable = false)
+	@JoinColumn(name = "executor_id")
 	private User executor;
 
 	@ManyToOne(fetch = FetchType.EAGER)
@@ -50,7 +50,7 @@ public class Advert {
 	private AdvertType type;
 
 	public Advert(String titleName, String description, Timestamp startDate,
-				  Timestamp endDate, Double price, User creator, User executor, AdvertType type) {
+				  Timestamp endDate, Double price, User creator, User executor, AdvertType type, byte[] image) {
 		this.titleName = titleName;
 		this.description = description;
 		this.startDate = startDate;

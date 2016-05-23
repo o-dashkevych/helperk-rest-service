@@ -8,8 +8,13 @@ import org.springframework.web.bind.annotation.RestController;
 import ua.nure.helperk.entity.AdvertType;
 import ua.nure.helperk.service.AdvertTypeService;
 
+import java.util.List;
+
+/**
+ * @author Oleg Dashkevych.
+ */
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/advert_type")
 public class AdvertTypeController {
 
 	private static final Logger LOGGER = Logger.getLogger(AdvertTypeController.class);
@@ -18,27 +23,15 @@ public class AdvertTypeController {
 	private AdvertTypeService advertTypeService;
 
 	@RequestMapping("/get")
-	public AdvertType get(@RequestParam(value = "name") String name) {
-		LOGGER.info("name -> " + name);
-		return advertTypeService.getByName(name);
+	public AdvertType getRole(@RequestParam(value = "name") String name) {
+		LOGGER.info("get advertType for name - >" + name);
+		return advertTypeService.findAdvertTypeByName(name);
 	}
 
-	@RequestMapping("/add")
-	public Boolean add(@RequestParam(value = "name") String name) {
-		LOGGER.info("name -> " + name);
-		if(existAdvertType(name)) {
-			advertTypeService.add(new AdvertType(name));
-			return true;
-		}else return false;
-	}
-
-	private Boolean existAdvertType(String name){
-		return advertTypeService.getByName(name) != null;
-	}
-
-	@RequestMapping("/delete")
-	public void delete(@RequestParam(value = "name") String name) {
-		LOGGER.info("name -> " + name);
-		advertTypeService.delete(new AdvertType(name));
+	@RequestMapping("/all")
+	public List<AdvertType> getAll() {
+		List<AdvertType> advertTypes = advertTypeService.getAllAdvertTypes();
+		LOGGER.info("all advertTypes size: " + advertTypes.size());
+		return advertTypes;
 	}
 }
